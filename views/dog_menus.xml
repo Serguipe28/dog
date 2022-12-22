@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="dog_action" model="ir.actions.act_window">
+        <field name="name">Dog</field>
+        <field name="res_model">dog.dog</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="dog_points_action" model="ir.actions.act_window">
+        <field name="name">Puntos</field>
+        <field name="res_model">dog.points</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <menuitem id="menu_root" name="Perro" />
+
+    <menuitem id="dog.sub_menu" name="Perros" action="dog_action" parent="dog.menu_root" />
+   
+    <menuitem id="dog.points" name="Puntos" action="dog_points_action" parent="dog.menu_root" />
+
+</odoo>

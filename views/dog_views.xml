@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="dog_view_tree" model="ir.ui.view">
+		<field name="name">dog.view.tree</field>
+		<field name="model">dog.dog</field>
+		<field name="arch" type="xml">
+			<tree decoration-danger="retired==True">
+				<field name="name" />
+				<field name="retired" widget="boolean_toggle"/>
+				<field name="age" />
+				<field name="microchip" optional="hide" />
+				<field name="RFEC" optional="hide" />
+				<field name="RSCE" optional="hide" />
+			</tree>
+		</field>
+	</record>
+	<record id="dog_view_form" model="ir.ui.view">
+		<field name="name">dog.view.form</field>
+		<field name="model">dog.dog</field>
+		<field name="arch" type="xml">
+			<form string="Nuevo perro">
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						
+						<span class="oe_inline"><b>Retirado?</b>    </span><field name="retired" class="oe_inline" widget="boolean_toggle"/>
+						<button class="oe_stat_button" type="object" name="action_view_points" icon="fa-regular fa-paw" >
+							<field string="Perros" name="points_ids" widget="statinfo"/>
+						</button>
+
+						
+					</div>
+					<group>
+						<h1>
+							<field name="name" placeholder="Nombre"/>
+						</h1>
+						<group>
+                            <field name="microchip" />
+							<field name="partner_id" />
+						</group>
+						<group>
+							<field name="date_of_birth" />
+							<field name="age" />
+						</group>
+					</group>
+					<group attrs="{'invisible':[('retired', '=', True)]}">
+						<group>
+							<field name="RFEC" />
+							<field name="numero_liencica_RFEC" attrs="{'invisible':[('RFEC', '=', False)]}" />
+							<field name="jump_height_RFEC" attrs="{'invisible':[('RFEC', '=', False)]}"/>
+						</group>
+                        <group>
+							<field name="RSCE" />
+							<field name="numero_liencica_RSCE" attrs="{'invisible':[('RSCE', '=', False)]}" />
+							<field name="jump_height_RSCE" attrs="{'invisible':[('RSCE', '=', False)]}"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+</odoo>

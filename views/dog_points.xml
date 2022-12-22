@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dog_points_view_tree" model="ir.ui.view">
+        <field name="name">dog.points.view.tree</field>
+        <field name="model">dog.points</field>
+        <field name="arch" type="xml">
+            <tree string="Puntos" decoration-success="tipo=='Agility'" decoration-primary="tipo=='Jumping'">
+                <field name="dog_id" />
+                <field name="guia" />
+                <field name="club_id" />
+                <field name="federacion" />
+                <field name="tipo" />
+                <field name="date" />
+                <field name="speed" />
+            </tree>
+        </field>
+    </record>
+    <record id="dog_points_view_form" model="ir.ui.view">
+        <field name="name">dog.points.view.form</field>
+        <field name="model">dog.points</field>
+        <field name="arch" type="xml">
+            <form string="Añadir punto">
+                <sheet>
+                    <group>
+                        <field name="dog_id" />
+                        <field name="guia" />
+                    </group>
+                    <group>
+                        <field name="club_id" />
+                        <field name="federacion" />
+                        <field name="tipo" />
+                        <field name="date" />
+                        <field name="speed" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dog_points_view_search" model="ir.ui.view">
+        <field name="name">dog.points.view.search</field>
+        <field name="model">dog.points</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="dog_id" />
+                <field name="guia" />
+                <field name="club_id" />
+                <filter name="agility" string="Agility" domain="[('tipo', '=', 'Agility')]" />
+                <filter name="jumping" string="Jumping" domain="[('tipo', '=', 'Jumping')]" />
+                <filter name="RSCE" string="RSCE" domain="[('federacion', '=', 'RSCE')]" />
+                <filter name="RFEC" string="RFEC" domain="[('federacion', '=', 'RFEC')]" />
+                <group expand="0" string="Group By">
+                    <filter name="tipo" string="Tipo"  context="{'group_by': 'tipo'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
